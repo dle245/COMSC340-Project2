@@ -1,21 +1,46 @@
-//MergeSort.java
+//Mergesort.java
 //Author: Connor Mulberry
 //COMSC 340
 //Project 2
 
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class MergeSort {
 
 public static void main(String[] args) {
-    int [] S = {6,3,1,14,2,13,5,9,8,4};
-    int n = 10;
-    MergeSort(n, S);
-    System.out.println(S.toString());
-}
 
+    ArrayList<Integer> list = new ArrayList<Integer>();
+
+    //Your test file
+    String fileName = "testcase.txt";
+
+    try {
+        Scanner scanner = new Scanner(new File(fileName));
+        while (scanner.hasNextInt()) {
+            list.add(scanner.nextInt());
+        }
+        scanner.close();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    int[] S = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+        S[i] = list.get(i);
+    }
+    int n = S.length;
+    MergeSort(n, S);
+    System.out.println(Arrays.toString(S));
+    
+}
+ 
 static void MergeSort (int n, int [] S) {
     if (n > 1) {
         final int h = (n/2);
-        int size = h;
         int m = n-h;
         int[] U = new int[h];
         int[] V = new int[m];
@@ -23,7 +48,7 @@ static void MergeSort (int n, int [] S) {
                 U[i] = S[i];
             }
             for(int i = 0; i < m; i++) {
-                V[i] = S[h+1];
+                V[i] = S[h+i];
             }
         MergeSort(h, U);
         MergeSort(m, V);
@@ -32,13 +57,12 @@ static void MergeSort (int n, int [] S) {
 }
 
 static void merge (int h, int m, final int[] U, final int[] V, int[] S) {
-   
    //index values
-    int i = 1;
-    int j = 1;
-    int k = 1;
+    int i = 0;
+    int j = 0;
+    int k = 0;
 
-    while(i <= h && j <= m) {
+    while(i < h && j < m) {
         if(U[i] < V[j]) {
             S[k] = U[i];
             i++;
@@ -49,20 +73,17 @@ static void merge (int h, int m, final int[] U, final int[] V, int[] S) {
         }
         k++;
     }
-
-    if (i>h) {
-        while (i > h) { 
-            S[k] = V[j];
-            j++;
+    if (i >= h) {
+        for (int x = j; x < m; x++) {
+            S[k] = V[x];
             k++;
         }
     } else {
-        while (i <= h) {
-            U[i] = S[k];
-            i++;
+        for (int x = i; x < h; x++) {
+            S[k] = U[x];
             k++;
         }
-
     }
 }
 }
+
