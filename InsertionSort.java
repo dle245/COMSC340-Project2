@@ -1,6 +1,7 @@
 //InsertionSort.Java
 //Insertion Sort Using Arrays
 //COMSC 340
+//An algorithm that performs an Insertion Sort through Arrays
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-//An algorithm that performs an Insertion Sort through Arrays
 public class InsertionSort {
 
 	public static void main(String[] args) { //A test run of the implemented program
