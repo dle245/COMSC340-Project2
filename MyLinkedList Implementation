@@ -1,0 +1,33 @@
+class LinkedListClass{
+    
+    private static class Node{
+        
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data
+            
+            next = null;
+        }
+    }
+    
+    // Inserting A Node
+    
+    Node head;
+    public void add(int data)
+    {
+        Node pseudonode = new Node(data);
+        if(head == null){
+            head= pseudonode;
+            return;
+        }
+        Node temp=head;
+        
+        while(temp.next!= null){
+            temp=temp.next
+        }
+        
+        temp.next=pseudonode;
+        
+    }
