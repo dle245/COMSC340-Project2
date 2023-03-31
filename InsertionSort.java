@@ -33,10 +33,14 @@ public class InsertionSort {
         a[i] = list.get(i);
     }
         
-        //int [] a = {11,10,9,4,6}; //A starter array
+        int [] a = {11,10,9,4,6}; //A starter array
 		int [] b = shiftArray(a); //Shifting the array so that insertion sort works
+		long begin = System.nanoTime();
 		insertionSort(a.length, b); //Performing the insertion sort
+		long end = System.nanoTime();
+		long time = end - begin;
 		System.out.println(Arrays.toString(b)); //Printing the results
+		System.out.println("Insertion Sort took " + time + " nano seconds to run");
 		
 	}
 	
