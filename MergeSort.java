@@ -16,7 +16,7 @@ public static void main(String[] args) {
     ArrayList<Integer> list = new ArrayList<Integer>();
 
     //Your test file
-    String fileName = "testcase.txt";
+    String fileName = "random5k.txt";
 
     try {
         Scanner scanner = new Scanner(new File(fileName));
@@ -33,8 +33,12 @@ public static void main(String[] args) {
         S[i] = list.get(i);
     }
     int n = S.length;
+    long start = System.nanoTime();
     MergeSort(n, S);
+    long finish = System.nanoTime();
+    long elapsed = finish-start;
     System.out.println(Arrays.toString(S));
+    System.out.println("Time: " + elapsed + " nanoseconds");
     
 }
  
