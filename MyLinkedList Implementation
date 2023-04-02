@@ -1,33 +1,102 @@
-class LinkedListClass{
+/******************************************************************************
+Author: Alden Sahi
+Date: 04/04/2023
+Program Name: Insertion-Sort_Linked-List.java
+Program Description: 
+
+1. Makes A Linked List using user input
+2. Uses Insertion Sort to Sort List
+3. Outputs Sorted List
+
+*******************************************************************************/
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+//defines what a node is
+public class Node{
+    //content as int
+    int data;
+    // reference to next node
+    Node next;
+}
+
+class LinkedList{
     
-    private static class Node{
-        
-        int data;
-        Node next;
-        Node(int data)
-        {
-            this.data=data
-            
-            next = null;
-        }
-    }
+    // establish first node
+    Node head;
     
     // Inserting A Node
     
-    Node head;
     public void add(int data)
     {
-        Node pseudonode = new Node(data);
-        if(head == null){
-            head= pseudonode;
-            return;
-        }
-        Node temp=head;
+        Node node = new Node();
+        node.data = data;
         
-        while(temp.next!= null){
-            temp=temp.next
+        //if no data add first object as head
+        if(head==null)
+        {
+            head = node;
         }
         
-        temp.next=pseudonode;
+        else
+        {
+            Node n = head;
+            //finds end of List
+            while(n.next!=null)
+            {
+                n = n.next;
+            }
+            n.next = node;
+        }
         
     }
+    
+    public void show()
+    {
+        Node n = head;
+        
+        while (n.next!= null)
+        {
+            System.out.println(n.data);
+            n = n.next;
+        }
+    // prints last value
+    System.out.println(n.data);
+    }
+}
+
+public class InsertionSort{
+    
+    public void insrt_sort(){
+        
+    Node n = head;
+        
+    if (n < n.next)
+    {
+    
+    }
+        
+    // prints last value
+    System.out.println(n.data);
+
+    }
+    
+
+public class FileReader {
+    
+    public static void main(String[] args) throws FileNotFoundException{
+        //creates file as object
+        File file = new File("testcase.txt");
+        Scanner scan = new Scanner(file);
+        
+        LinkedList list = new LinkedList();
+        
+        while(scan.hasNextInt()){
+            list.add(scan.nextInt());
+        }
+
+
+        list.show();
+    }
+}
