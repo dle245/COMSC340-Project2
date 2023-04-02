@@ -68,18 +68,30 @@ class LinkedList{
 
 public class InsertionSort{
     
-    public void insrt_sort(){
-        
-    Node n = head;
-        
-    if (n < n.next)
-    {
+    public void insrt_sort(LinkedList list) {
+        if (list == null || list.head == null) {
+            return;
+        }
     
-    }
-        
-    // prints last value
-    System.out.println(n.data);
-
+        Node current = list.head.next;
+        while (current != null) {
+            int valueToInsert = current.data;
+            Node insertionPoint = list.head;
+    
+            while (insertionPoint != current && insertionPoint.data <= valueToInsert) {
+                insertionPoint = insertionPoint.next;
+            }
+    
+            while (insertionPoint != current) {
+                int temp = insertionPoint.data;
+                insertionPoint.data = valueToInsert;
+                valueToInsert = temp;
+                insertionPoint = insertionPoint.next;
+            }
+    
+            insertionPoint.data = valueToInsert;
+            current = current.next;
+        }
     }
     
 
@@ -99,4 +111,7 @@ public class FileReader {
 
         list.show();
     }
+    
+}
+
 }
