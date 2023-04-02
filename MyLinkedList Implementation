@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 
 //defines what a node is
-public class Node{
+class Node{
     //content as int
     int data;
     // reference to next node
@@ -68,7 +68,7 @@ class LinkedList{
 
 public class InsertionSort{
     
-    public void insrt_sort(LinkedList list) {
+    public void insertSort(LinkedList list) {
         if (list == null || list.head == null) {
             return;
         }
@@ -93,10 +93,7 @@ public class InsertionSort{
             current = current.next;
         }
     }
-    
 
-public class FileReader {
-    
     public static void main(String[] args) throws FileNotFoundException{
         //creates file as object
         File file = new File("testcase.txt");
@@ -107,11 +104,10 @@ public class FileReader {
         while(scan.hasNextInt()){
             list.add(scan.nextInt());
         }
+        InsertionSort sorter = new InsertionSort();
+        sorter.insertSort(list);
 
-
+        System.out.println("After sorting:");
         list.show();
     }
-    
-}
-
 }
