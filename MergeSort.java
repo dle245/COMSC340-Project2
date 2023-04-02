@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class MergeSort {
+    static int comparisons;
 
 public static void main(String[] args) {
 
@@ -39,19 +40,23 @@ public static void main(String[] args) {
     long elapsed = finish-start;
     System.out.println(Arrays.toString(S));
     System.out.println("Time: " + elapsed + " nanoseconds");
+    System.out.println("Comparisons: " + comparisons);
     
 }
  
 static void MergeSort (int n, int [] S) {
     if (n > 1) {
+        comparisons++;
         final int h = (n/2);
         int m = n-h;
         int[] U = new int[h];
         int[] V = new int[m];
             for(int i = 0; i < h; i++) {
+                comparisons++;
                 U[i] = S[i];
             }
             for(int i = 0; i < m; i++) {
+                comparisons++;
                 V[i] = S[h+i];
             }
         MergeSort(h, U);
@@ -67,7 +72,10 @@ static void merge (int h, int m, final int[] U, final int[] V, int[] S) {
     int k = 0;
 
     while(i < h && j < m) {
+        comparisons++;
+        comparisons++;
         if(U[i] < V[j]) {
+            comparisons++;
             S[k] = U[i];
             i++;
         }
@@ -78,12 +86,15 @@ static void merge (int h, int m, final int[] U, final int[] V, int[] S) {
         k++;
     }
     if (i >= h) {
+        comparisons++;
         for (int x = j; x < m; x++) {
+            comparisons++;
             S[k] = V[x];
             k++;
         }
     } else {
         for (int x = i; x < h; x++) {
+            comparisons++;
             S[k] = U[x];
             k++;
         }
