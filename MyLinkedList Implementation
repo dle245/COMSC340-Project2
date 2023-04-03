@@ -4,7 +4,7 @@ Date: 04/04/2023
 Program Name: Insertion-Sort_Linked-List.java
 Program Description: 
 
-1. Makes A Linked List using user input
+1. Makes A Linked List using Input from File
 2. Uses Insertion Sort to Sort List
 3. Outputs Sorted List
 
@@ -105,9 +105,14 @@ public class InsertionSort{
             list.add(scan.nextInt());
         }
         InsertionSort sorter = new InsertionSort();
+        long startTime = System.nanoTime();
         sorter.insertSort(list);
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime();
 
         System.out.println("After sorting:");
         list.show();
+        
+        System.out.println("Time taken to Run Sort: " + totalTime + "ns");
     }
 }
