@@ -68,7 +68,7 @@ class LinkedList{
 
 public class InsertionSort{
 
-    int count = 0; 
+    static int count = 0; 
     
     public void insertSort(LinkedList list) {
         if (list == null || list.head == null) {
@@ -114,7 +114,7 @@ public class InsertionSort{
         long startTime = System.nanoTime();
         sorter.insertSort(list);
         long endTime = System.nanoTime();
-        long totalTime = endTime - startTime();
+        long totalTime = endTime - startTime;
 
         System.out.println("After sorting:");
         list.show();
